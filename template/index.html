@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="REFRESH" content="1800">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta content="news" itemprop="genre" name="medium">
+    <meta content="vi-VN" itemprop="inLanguage">
+	<script src="https://gistcdn.githack.com/nemesisqp/26a6e34599a6a5f75b9c8b1fe03d5bd5/raw/767b75da486e198bd4852b4b1116723ba8e97d69/rivets.bundled.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script>var rivetData = {{#rivetData}}{{rivetData}}{{/rivetData}}</script>
+	
+    <title>{{title}}</title>
+</head>
+
+<body>
+{{{contents}}}
+	<h4>Mô tả cách lấy được giá trị của radio button khi users lựa chọn</h4>
+	  <br/>
+	  <button type="submit" class="button button-red" onclick="Gui()">GỬI</button>
+	  <div class="container">
+		<div class="row">
+		  
+		  <div class="col-md-5 col-sm-6 col-md-offset-1">
+			<!-- DUNG LUONG -->
+			<h5>1. Chọn dung lượng : </h5>
+			
+			<!-- Lặp (sử dụng rv-each-*) cho tất cả phần tử của biến sanpham (data.sanpham), dữ liệu của mỗi phần tử được gán cho biến item -->
+			<label class="radio-inline" rv-each-item="sanpham">
+			  <!-- giá trị của mỗi radio button được gán bởi lệnh rv-value chỉ tới biến item.dungluong.value -->
+			  <!-- khi users chọn 1 radio button, thì giá trị của button này sẽ được truyền vào cho biến post.dungluong thông qua lệnh rv-checked -->
+			  <input name="storage" type="radio" rv-value="item.dungluong.value" rv-checked="post.dungluong">
+			  <!-- binding theo dạng html, chứ ko phải là giá trị -->
+			  <span rv-html="item.dungluong.display"></span> &nbsp;
+			</label>
+
+		  </div>
+		</div>
+	  </div>
+	  <script>rivets.bind(document.querySelector('body'), rivetData.body);</script>
+</body>
+<html>
